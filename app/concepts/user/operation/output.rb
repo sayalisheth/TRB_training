@@ -1,11 +1,9 @@
 module User::Operation
-  class Index < Trailblazer::Operation
+  class Output < Trailblazer::Operation
 
-    step :valid_user?
-    fail :log_error, fail_fast: true
-    step :valid_role?
-    fail :log_invalid_role_error
-    step :load_users
+    step :is_admin?, Output(:failure) => Track(:member)
+    step :admin_response
+    step :user_response, magnetic_to: :member
 
     def valid_user?(ctx, **)
       true
@@ -28,3 +26,4 @@ module User::Operation
     end
   end
 end
+
