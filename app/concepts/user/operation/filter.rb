@@ -22,7 +22,6 @@ module User::Operation
     end
 
     def filter_with_status(ctx, params:, users:, **)
-      # ctx[:users] = users.where(status: params[:status])
       ctx[:status] = 'Users filter by status'
     end
 
@@ -31,7 +30,6 @@ module User::Operation
     end
 
     def order_by_created_at(ctx, users:, **)
-      # ctx[:users] = users.order(:desc, :crated_at)
       ctx[:order_by] = 'Users ordered by created at'
     end
 
